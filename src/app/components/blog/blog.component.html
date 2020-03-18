@@ -1,0 +1,56 @@
+<div *ngIf='data !== undefined && !showSpinner'>
+    <div class="blog-box" *ngFor='let blog of dataForView; let index = index' [ngClass]="{'oddBlog': 0 === index % 2}">
+        <div class="actions">
+            <div class="informations">
+                <img src="../../../assets/img/img_80x80.png" alt="img_80x80.png">
+                <div class="about">
+                    <p class="title">{{blog.title}}</p>
+                    <p class="time-date">Posted date: {{blog.updatedAt | date: 'dd.MM.yyyy  HH:mm'}} by Some person</p>
+                </div>
+            </div>
+            <div class="buttons">
+                <button (click)="editBlog(blog)">Edit</button>
+                <button (click)="deleteBlog(blog)">Delete</button>
+            </div>
+        </div>
+        <p class="blog-text">{{blog.text}}</p>
+        <div class="img-box">
+            <img src="../../../assets/img/img_100x100.png" alt="img_100x100.png">
+            <img src="../../../assets/img/img_100x100.png" alt="img_100x100.png">
+            <img src="../../../assets/img/img_100x100.png" alt="img_100x100.png">
+        </div>
+    </div>
+</div>
+
+<!-- modal window for insert form -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <p class="modal-title">Add/Edit blog post</p>
+        <div class="header-actions-box">
+            <span (click)="modal.minimize()">_</span>
+            <span (click)="modal.maximize()">🗖</span>
+            <span (click)="modal.dismiss()">X</span>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="section-box">
+            <label>Title</label>
+            <input type="text" placeholder="Title of the post" [(ngModel)]='formBlog.title'
+                [ngClass]="{ 'is-invalid': submitted && !formBlog.title }" (keydown.enter)="postBlog();">
+            <span>*</span>
+        </div>
+        <div class="section-box">
+            <label>Text</label>
+            <textarea placeholder="Text of the post" rows="8" [(ngModel)]='formBlog.text'
+                [ngClass]="{ 'is-invalid': submitted && !formBlog.text }" (keydown.enter)="postBlog();"></textarea>
+            <span>*</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" (click)="postBlog();" [disabled]='disabledPostButton'>Post</button>
+        <button type="button" (click)="modal.close();">Close</button>
+    </div>
+</ng-template>
+
+<!-- spinner -->
+<div class="lds-dual-ring" *ngIf='showSpinner'></div>

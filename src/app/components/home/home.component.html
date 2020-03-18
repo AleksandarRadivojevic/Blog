@@ -1,0 +1,51 @@
+<header>
+    <app-menu-bar></app-menu-bar>
+</header>
+
+<main>
+    <div class="welcome-box">
+        <h3>Welcome to My Blog</h3>
+        <div class="message-contaner" *ngIf='showContainerMessage'>
+            <p>{{actionMessage}}</p>
+            <span (click)='closeContainerMessage()'>&times;</span>
+        </div>
+        <div class="button-box">
+            <button (click)='addPost()'>Add post</button>
+        </div>
+    </div>
+    <section>
+        <div class="navigation-box">
+            <h4>Blog categories</h4>
+            <nav *ngIf='allCategories !== undefined'>
+                <li *ngFor='let category of allCategories'>
+                    <a (click)='navigateCategory(category.id)' [ngClass]="setClasses(category.id)">{{category.name}}</a>
+                </li>
+            </nav>
+        </div>
+        <div class="content">
+            <app-blog [dataCategoryID]='categoryID'></app-blog>
+        </div>
+    </section>
+</main>
+
+<!-- error handler -->
+<ng-template #contentHandler let-modal class="modal-content">
+    <div class="modal-header">
+        <p class="modal-title">Server error!</p>
+        <div class="header-actions-box">
+            <span (click)="modal.minimize()">_</span>
+            <span (click)="modal.maximize()">🗖</span>
+            <span (click)="modal.dismiss()">X</span>
+        </div>
+    </div>
+    <div class="modal-body">
+        <img src="../../../assets/errorIcon.png" alt="errorIcon.png">
+        <div class="message">
+            <h3>Server error!</h3>
+            <p>{{errorHandlerMess}}</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" (click)="modal.close();">Close</button>
+    </div>
+</ng-template>

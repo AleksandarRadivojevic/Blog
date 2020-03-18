@@ -1,0 +1,153 @@
+.blog-box {
+  padding: 15px 15px 15px 30px;
+  border: 1px solid #000;
+  margin-bottom: 15px;
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+
+    .informations {
+      display: flex;
+      .about {
+        margin-left: 10px;
+        .title {
+          font-size: 20px;
+          font-weight: 700;
+        }
+        .time-date {
+          font-size: 13px;
+          margin-top: -15px;
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 230px;
+    }
+  }
+
+  .blog-text {
+    margin-top: 10px;
+  }
+
+  .img-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    img {
+      margin-right: 10px;
+    }
+  }
+}
+
+/* modal window */
+.modal-content {
+  position: fixed;
+  left: 50%;
+  border: 1px solid #000;
+}
+.modal-header {
+  background-color: #ccc;
+  height: 15px;
+  border: 1px solid #000;
+  border-radius: 0;
+
+  p {
+    margin-top: -12px;
+    font-weight: 700;
+  }
+
+  .header-actions-box {
+    margin-top: -13px;
+    margin-right: -14px;
+
+    span {
+      font-size: 18px;
+      background: #fff;
+      border: 1px solid #000;
+      padding: 0 5px;
+      font-weight: 600;
+      margin-left: 2px;
+      cursor: pointer;
+      &:first-child {
+        padding: 0 9px;
+      }
+      &:last-child {
+        padding: 0 6px;
+      }
+    }
+  }
+}
+
+.modal-body {
+  padding: 40px;
+  .section-box {
+    display: flex;
+    margin-top: 10px;
+    input,
+    textarea {
+      margin: 0 10px;
+      width: 100%;
+    }
+    span {
+      color: #ff0000;
+    }
+  }
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-evenly;
+  border-top: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* every odd blog colorized */
+.oddBlog {
+  background: #ccc;
+}
+/* if is no good validation */
+.is-invalid {
+  border: 1px solid #ff0000;
+}
+
+// spinner
+.lds-dual-ring {
+  position: fixed;
+  left: 50%;
+  top: 45%;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #ccc;
+  border-color: #000 transparent #000 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.maximize {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
